@@ -30,7 +30,24 @@ public class MileageTracker
     /*
      * 1. Define methods by specifying:
      */
+    /**
+     * Increment the number of miles that the car has driven.
+     * 
+     * @param miles the additional distance, in miles, this car has driven
+     */
+    public void incrementMilesDriven(double miles)
+    {
+    }
     
+    /**
+     * Returns the total number of miles driven.
+     * 
+     * @return the total number of miles driven
+     */
+    public double getMilesDriven()
+    {
+        return 0;
+    }
     
     
     
