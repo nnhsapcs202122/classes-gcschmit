@@ -1,8 +1,8 @@
 /**
  * This class models a mileage tracker for a car.
  *
- * @author 
- * @version 
+ * @author gcschmit
+ * @version 20sep2021
  */
 public class MileageTracker
 {
@@ -29,10 +29,31 @@ public class MileageTracker
     
     /*
      * 1. Define methods by specifying:
+     *      the visibility (e.g., public, private)
+     *      the return type (e.g., void, double)
+     *      the method name (e.g., incrementMilesDriven, getMilesDriven)
+     *      the parameters and their types (e.g., miles of type double)
      */
     
+    /**
+     * Increments the number of miles that the car has driven.
+     * 
+     * @param miles the additional distance, in miles, this car has driven
+     */
+    public void incrementMilesDriven(double miles)
+    {
+        
+    }
     
-    
+    /**
+     * Returns the total number of miles driven.
+     * 
+     * @return the total number of miles driven
+     */
+    public double getMilesDriven()
+    {
+        return 0.0;
+    }
     
     
     
