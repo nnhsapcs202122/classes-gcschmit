@@ -49,10 +49,6 @@ public class MileageTracker
         return 0;
     }
     
-    
-    
-    
-    
     /**
      * Increment the number of gallons of fuel that this car has consumed
      * 
@@ -60,7 +56,7 @@ public class MileageTracker
      */
     public void incrementFuelConsumed(double gallons)
     {
-        this.fuelConsumed += gallons;
+        //this.fuelConsumed += gallons;
     }
     
     /**
@@ -70,7 +66,8 @@ public class MileageTracker
      */
     public double getFuelConsumed()
     {
-        return this.fuelConsumed;
+        //return this.fuelConsumed;
+        return 0.0;
     }
     
     
@@ -81,8 +78,9 @@ public class MileageTracker
      */
     public double getMileage()
     {
-        double mileage = this.fuelConsumed / this.milesDriven;
-        return mileage;
+        //double mileage = this.fuelConsumed / this.milesDriven;
+        //return mileage;
+        return 0.0;
     }
     
     /**
@@ -92,7 +90,8 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        return this.vin;
+        //return this.vin;
+        return "";
     }
     
     /**
@@ -102,7 +101,7 @@ public class MileageTracker
      */
     public void setVIN(String vin)
     {
-        vin = vin;
+        //vin = vin;
     }
 }
 
