@@ -75,11 +75,8 @@ public class MileageTracker
      */
     public void incrementMilesDriven(double miles)
     {
-<<<<<<< Updated upstream
-=======
         //this.milesDriven = this.milesDriven + miles;
         this.milesDriven += miles;
->>>>>>> Stashed changes
     }
     
     /**
@@ -89,11 +86,7 @@ public class MileageTracker
      */
     public double getMilesDriven()
     {
-<<<<<<< Updated upstream
-        return 0;
-=======
         return this.milesDriven;
->>>>>>> Stashed changes
     }
     
     /**
