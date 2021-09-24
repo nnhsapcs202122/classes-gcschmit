@@ -133,8 +133,7 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "";
+        return this.vin;
     }
     
     /**
@@ -142,9 +141,30 @@ public class MileageTracker
      * 
      * @param vin    the vehicle identification (VIN) of this car
      */
-    public void setVIN(String vin)
+    public void setVIN(String newVIN)
     {
+        /*
+         * If the parameter was named vin, it would "shadow" the
+         *      instance variable vin.
+         *      
+         *  Local and parameter variables "shadow" instance variables
+         *      of the same name. In this code, vin would refer to the
+         *      parameter and not the instance variable.
+         *      
+         *  To refer explicitly to an instance variable, use "this".
+         *  
+         *  Better practice: avoid this issue by giving local, parameter,
+         *      and instance variables unique names!
+         */
+        
+        // bad
         //vin = vin;
+        
+        // good
+        //this.vin = vin;
+        
+        // better
+        this.vin = newVIN;
     }
 }
 
