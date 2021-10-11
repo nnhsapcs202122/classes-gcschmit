@@ -54,7 +54,19 @@ public class CaesarCipherDemo
         
         CaesarCipher cipher = new CaesarCipher(keyphrase);
         
+        System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
         
+        /*
+         * The nextInt method attempts to convert the next token in the stream to an int
+         *      and returns the value. If the next token cannot be converted, an
+         *      exception is generated.
+         */
+        int secondsPerGuess = s.nextInt();
+        String complexityDesc = cipher.getComplexityDescription(secondsPerGuess);
+        System.out.println("Complexity: " + complexityDesc);
+        
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted: " + encryptedText);
     }
 }
 
