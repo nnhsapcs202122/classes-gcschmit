@@ -31,7 +31,7 @@ public class CaesarCipherDemo
         
         /*
          * Best practices:
-         *      1. prompt the uswer for what you want them to input
+         *      1. prompt the user for what you want them to input
          *      2. use print, not println; so that the cursor is at the end of the
          *          prompt and not on a new line
          *      3. leave a space after the prompt
@@ -53,7 +53,23 @@ public class CaesarCipherDemo
         String keyphrase = s.next();
         keyphrase = keyphrase.toUpperCase();
         
+        System.out.print("Enter the number of seconds to test a guessed keyphrase: ");
         
+        /*
+         * The nextInt method attempts to convert the next token in the stream to an int
+         *      and returns the value. If the next token cannot be converted, an
+         *      exception is generated.
+         *      
+         *  The nextDouble method behaves in the same way for doubles.
+         */
+        int secondsPerGuess = s.nextInt();
+        
+        CaesarCipher cipher = new CaesarCipher(keyphrase);
+        String complexityDesc = cipher.getComplexityDescription(secondsPerGuess);
+        System.out.println("Complexity: " + complexityDesc);
+        
+        String encryptedText = cipher.encrypt(text);
+        System.out.println("Encrypted: " + encryptedText);
     }
 }
 
