@@ -3,6 +3,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.awt.Color;
 
 /**
    A car shape that can be positioned anywhere on the screen.
@@ -49,7 +50,9 @@ public class Car
       Line2D.Double rearWindshield = new Line2D.Double(r3, r4);
       
       // draws the car
+      g2.setColor(Color.RED);
       g2.fill(body);
+      g2.setColor(Color.BLACK);
       g2.fill(frontTire);
       g2.fill(rearTire);
       g2.draw(frontWindshield);      
