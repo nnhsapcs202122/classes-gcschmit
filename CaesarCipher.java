@@ -10,15 +10,21 @@ import java.util.Scanner;
  */
 public class CaesarCipher
 {
+    /*
+     * static: one value for the variable for all objects of the class.
+     *      This is like class attributes in Python.
+     *      Static class variables can be accessed directly through the class
+     *          (e.g., CaesarCipher.ALPHABET, Math.PI, Color.RED).
+     */
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
+
     private String keyphrase;
-    
+
     public CaesarCipher(String initialKeyphrase)
     {
         this.compressKeyphrase(initialKeyphrase);
     }
-    
+
     /**
      * Returns a string that describes the average time to crack the cipher,
      *      in several formats, based on the specified number of seconds per guess.
@@ -42,16 +48,16 @@ public class CaesarCipher
         final int MINUTES_FOR_EVERY_HOUR = 60;
         final int HOURS_FOR_EVERY_DAY = 24;
         final int DAYS_FOR_EVERY_YEAR = 365;
-        
+
         // if we try to change the value, a compiler error will be generated
         //SECONDS_FOR_EVERY_MINUTE = 30;
-        
+
         String desc = "";
-        
+
         // one method in a class can invoke another method in the same class
         //  we invoke the method on "this"
         long totalSeconds = this.calculateAverageTimeToCrack(secPerGuess);
-        
+
         /*
          * Use integer division to calculate how many whole minutes are in the
          *      specified number of seconds.
@@ -66,7 +72,7 @@ public class CaesarCipher
          *      3.0 / 4 => 0.75     (3.0 is a double literal)
          */
         long wholeMinutes = totalSeconds / SECONDS_FOR_EVERY_MINUTE;
-        
+
         /*
          * Use the modulo (mod, remainder) operator to calculate how many seconds are
          *      leftover.
@@ -84,20 +90,20 @@ public class CaesarCipher
          *  % 2 is frequently used to test odd/even (odd => 1; even => 0)
          */
         long leftoverSeconds = totalSeconds % SECONDS_FOR_EVERY_MINUTE;
-        
+
         long wholeHours = wholeMinutes / MINUTES_FOR_EVERY_HOUR;
         long leftoverMinutes = wholeMinutes % MINUTES_FOR_EVERY_HOUR;
-        
+
         long wholeDays = wholeHours / HOURS_FOR_EVERY_DAY;
         long leftoverHours = wholeHours % HOURS_FOR_EVERY_DAY;
-        
+
         long wholeYears = wholeDays / DAYS_FOR_EVERY_YEAR;
         long leftoverDays = wholeDays % DAYS_FOR_EVERY_YEAR;
-        
+
         desc = "Average time to crack: " + wholeYears + " years, " + leftoverDays +
-                " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
-                leftoverSeconds + " seconds\n";
-        
+        " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
+        leftoverSeconds + " seconds\n";
+
         /*
          * A conversion is when a data value is converted from one type to another
          *      (e.g., int to a double; double to an int, int to a long)
@@ -108,7 +114,7 @@ public class CaesarCipher
          *  Java only automatically performs widening conversions.
          */
         double yearsAsDecimal = totalSeconds;
-        
+
         /*
          * Arithmetic Promotion
          * 
@@ -125,8 +131,8 @@ public class CaesarCipher
          *      the wrong value will be promoted to a long and stored.
          */
         final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE *
-                MINUTES_FOR_EVERY_HOUR * HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
-                
+            MINUTES_FOR_EVERY_HOUR * HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
+
         /*
          * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
          *      and then floating-point division is performed and assigned to
@@ -137,7 +143,7 @@ public class CaesarCipher
          */
         yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
         desc += "or " + yearsAsDecimal + " years\n";
-                
+
         /*
          * To force a conversion, use the cast operator.
          *      A cast is the "I know what I'm doing, trust me" conversion.
@@ -154,10 +160,10 @@ public class CaesarCipher
          */
         int decades = (int)((yearsAsDecimal / 10) + 0.5);
         desc += "or about " + decades + " decades\n";
-        
+
         return desc;
     }
-    
+
     /**
      * Compresses the specified keyphrase by removing all duplicate letters.
      * 
@@ -166,12 +172,13 @@ public class CaesarCipher
     private void compressKeyphrase(String initKeyphrase)
     {
         this.keyphrase = "";
-        
+
         /*
          * length
          *      returns the number of characters in the string
+         */
         int keyphraseLength = initKeyphrase.length();
-        
+
         for(int i = 0; i < keyphraseLength; i++)
         {
             /*
@@ -185,7 +192,7 @@ public class CaesarCipher
              *  length = 6
              */
             char letter = initKeyphrase.charAt(i);
-            
+
             /*
              * substring
              *      returns part of the string starting at the first specified index
@@ -204,7 +211,7 @@ public class CaesarCipher
              */
             String restOfKeyphrase = initKeyphrase.substring(i + 1);
             // same as: initKeyphrase.substring(i + 1, initKeyphrase.length());
-            
+
             /*
              * indexOf
              *      returns the index of the start of the first occurrence of the
@@ -218,7 +225,7 @@ public class CaesarCipher
              *  length = 5
              */
             int index = restOfKeyphrase.indexOf(letter);
-            
+
             /*
              * String concatenation
              *      + is the string concatenation operator
@@ -238,8 +245,7 @@ public class CaesarCipher
             }
         }
     }
-    
-    
+
     /**
      * Encrypts the specified text using the specified keyphrase using a
      *      keyphrase-enhanced Caesar Cipher.
@@ -316,7 +322,7 @@ public class CaesarCipher
         int lettersRemaining = NUMBER_OF_LETTERS_IN_ALPHABET;
         int keyphraseLength = this.keyphrase.length();
         long combinations = 1;
-        
+
         /*
          * Calculate the number of combintations for the specified keyphrase length.
          *  For example, if the keyphrase is six characters long:
@@ -336,4 +342,49 @@ public class CaesarCipher
         //  cipher on the first attempt
         return worstCaseTimeToCrack/2;
     }
+
+    /*
+     * This method is static and, therefore, is independent of the state of a
+     *      CaesarCipher object.
+     *  As a result, this method may be invoked on the class instead of a variable
+     *      that references an object:
+     *      
+     *      CaesarCipher.generateKeyphrase(7);
+     *      
+     *  In addition, this method cannot access any instance variables or invoke
+     *      any non-static methods (there is no "this").
+     */
+
+    /**
+     * Generates a pseudorandom keyphrase of the specified length in characters
+     * 
+     * @param length the number of characters in the keyphrase
+     * @return a pseudorandom keyphrase of the specified length
+     */
+    public static String generateKeyphrase(int length)
+    {
+        String keyphrase = "";
+
+        for(int i = 0; i < length; i++)
+        {
+            /*
+             * The Math.random static method returns a double [0.0 ... 1.0)
+             * 
+             *  Often we use the following algorithm to generate random integers from
+             *      [min ... max]:
+             *      
+             *      int n = (int)((Math.random() * (max - min + 1)) + min);
+             *      
+             *  For example: generate a random int [0 ... 25]
+             *  
+             *  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+             *  0         5 6          ...                        25    <= indicies
+             */
+            int letterIndex = (int)(Math.random() * 26);
+            keyphrase += CaesarCipher.ALPHABET.substring(letterIndex, letterIndex + 1);
+        }
+
+        return keyphrase;
+    }
 }
+
